@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+// importando firebase
+import './firebase';
+//importando bootswatch - instalado con npm i bootswatch
+import 'bootswatch/dist/solar/bootstrap.min.css'
 
 ReactDOM.render(
   <React.StrictMode>

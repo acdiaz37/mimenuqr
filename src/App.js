@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import FormularioMenu from "./components/FormularioMenu";
+import Plato from "./components/Plato";
 
 function App() {
+  //state de los platos
+
+  const [platos, setPlatos] = useState([]);
+
+  //funcion que toma los platos actuales y agrega uno nuevo
+  const crearPlato = plato=>{
+    console.log(plato)
+    setPlatos([
+      ...platos,plato
+    ])
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <div className="container p-4">
+        <div>
+          <FormularioMenu
+            crearPlato={crearPlato}
+          />
+          {platos.map(plato => (
+            <Plato  
+                key= {plato.id}           
+                plato={plato}         
+            />
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 
 export default App;
+/*
+  
+*/

@@ -105,8 +105,7 @@ const FormularioMenu = ({crearPlato}) => {
             placeholder="Precio"
             name="precioPlato"
             type="number"
-            min="0.00"
-            max="10000.00"
+            min="0.00"            
             step="0.01"
             onChange={handleInputChange}
             value={precioPlato}

@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker';
 // importando firebase
 import './firebase';
 //importando bootswatch - instalado con npm i bootswatch
-import 'bootswatch/dist/solar/bootstrap.min.css'
+import 'bootswatch/dist/darkly/bootstrap.min.css'
 
 ReactDOM.render(
   <React.StrictMode>

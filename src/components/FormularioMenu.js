@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 const FormularioMenu = ({crearPlato}) => {
-  //state del nombre del restaurante
- 
+   
 
   const [plato, setPlato] = useState({    
     nombrePlato: "",
@@ -19,6 +18,7 @@ const FormularioMenu = ({crearPlato}) => {
       [e.target.name]: e.target.value
     })
   };
+
 
   //estraer valores 
   const {nombrePlato, precioPlato, comentarioPlato} = plato;
@@ -72,26 +72,15 @@ const FormularioMenu = ({crearPlato}) => {
           </div>
         ) : null}
 
-        <div className="form-group input-group">
-          <div className="input-group-text bg-light">
-            <i className="material-icons">description</i>
-          </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Nombre Restaurante"
-            name="nombrerestaurante"
-            onChange={handleInputChange}
-          />
-        </div>
+      
 
         <div className="form-group input-group">
           <input
             className="form-control"
             placeholder="Nombre plato"
             name="nombrePlato"
-            type="text"
-            onChange={handleInputChange}
+            type="text"       
+            onChange={handleInputChange}     
             value={nombrePlato}
           />
         </div>
@@ -106,7 +95,7 @@ const FormularioMenu = ({crearPlato}) => {
             name="precioPlato"
             type="number"
             min="0.00"            
-            step="0.01"
+            step="0.01"            
             onChange={handleInputChange}
             value={precioPlato}
           />
@@ -116,7 +105,7 @@ const FormularioMenu = ({crearPlato}) => {
           <textarea
             className="form-control"
             placeholder="Comentarios"
-            name="comentarioPlato"
+            name="comentarioPlato"            
             onChange={handleInputChange}
             value={comentarioPlato}
           />

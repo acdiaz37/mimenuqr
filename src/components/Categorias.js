@@ -1,26 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import {MenuContext} from "../context/MenuContext"
 
-const Categorias = () => {
-    
-    //nombre de la categoria actual
-    const [currentcategoria, setCurrentcategoria] = useState({
-        nombreCategoria : ""
-    });
-
-    
+const Categorias = () => {    
    
+    //funcion que guarda las categorias en el context
+    const handleCategoria = (e) =>{        
+        setcurrentCategoria({...currentCategoria, [e.target.name]:e.target.value})
+    }
+
+    const guardandoCategoria=(e)=>{
+        e.preventDefault();    
+        setlistaCategorias([...listaCategorias, currentCategoria.nombreCategoria])
+        setcurrentCategoria({nombreCategoria:""})
+        setbanderaCategorias(true)
+
+    }
+
+    const [currentCategoria, setcurrentCategoria] = useState("")
+    
+    //declarando el uso del context
+    const {setlistaCategorias,listaCategorias, setbanderaCategorias} = useContext(MenuContext);
     
     return ( 
     <>
-    <h2>Agregando Categorias</h2>
-        <input 
+        <form onSubmit={guardandoCategoria}> 
+        <input onChange={handleCategoria}
             type="text"
             className="form-control"
             placeholder="Nombre Categoria"
-            name="nombreCategoria"
+            name="nombreCategoria"   
+            value={currentCategoria.nombreCategoria}
+            
         />
-        <a className="btn btn-warning" onClick>GUARDAR CATEGORIA</a>
-
+        <button className="btn btn-warning"> Agregar Categoria</button>
+        </form>    
     </>
     );
 }

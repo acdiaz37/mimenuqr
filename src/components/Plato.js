@@ -4,9 +4,9 @@ const Plato = ({ plato }) => {
   return (
     <>
       <tr>
-        <td>{plato.nombrePlato}</td>
-        <td>$ {plato.precioPlato}</td>
-        <td>{plato.comentarioPlato}</td>
+        <td>NOMBRE}</td>
+        <td>$ PRECIO}</td>
+        <td>COMENTARIO</td>
         <td>
         
             <button type="button" className="btn btn-sm btn-success">Er</button>

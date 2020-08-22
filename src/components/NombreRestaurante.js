@@ -1,7 +1,7 @@
 import React, { useState, useContext }  from 'react'
 import {MenuContext} from "../context/MenuContext"
 
-const NombreRestaurante = ({nombreRestaurante, setnombreRestaurante}) => {
+const NombreRestaurante = () => {
 
     
 
@@ -54,19 +54,17 @@ const NombreRestaurante = ({nombreRestaurante, setnombreRestaurante}) => {
     const {nombreRest, setnombreRest, setbanderaNombre} = useContext(MenuContext);
 
     return ( 
-        <>
+        <>    
           
-          <div className="container p-10">
-            <div className="card card-body">
             {nombrelleno ? 
-                <><h1>{nombreRest.NombreRestaurante}</h1>
+                <><h2>{nombreRest.NombreRestaurante}</h2>
                 <a className="btn btn-success" 
                     onClick={cambiandoNombreLleno} 
                     
                     
                 >Editar</a></>
                 :
-                <>
+                <><div className="border border-warning my-3">
                 <form onSubmit={guardandoNombre}>
                 <input
                   type="text"
@@ -79,20 +77,12 @@ const NombreRestaurante = ({nombreRestaurante, setnombreRestaurante}) => {
                 <button className="btn btn-warning">GUARDAR</button>
 
                 </form>
+                </div>
                 
                 
                 </>
 
-            }
-            </div>
-          </div>
-          
-           
-           
-          
-      
-         
-        
+            }                 
         </>
      );
 }

@@ -7,7 +7,10 @@ const FormularioMenu = () => {
     nombrePlato: "",
     precioPlato: "",
     comentarioPlato: "",
+    categoria:"",
   });
+
+  const [catePlatos, setcatePlatos] = useState([])
 
   const [error, setError] = useState(false);
 
@@ -19,42 +22,48 @@ const FormularioMenu = () => {
   };
 
   //estraer valores
-  const { nombrePlato, precioPlato, comentarioPlato } = plato;
+  const { nombrePlato, precioPlato, comentarioPlato, categoria } = plato;
 
   const submitFormulario = (e) => {
     e.preventDefault();
-    console.log("enviando form");
+    //console.log("enviando form");
 
     //validar el formulario
     if (
       nombrePlato.trim() === "" ||
       precioPlato.trim() === "" ||
-      comentarioPlato.trim() === ""
+      comentarioPlato.trim() === ""      
     ) {
-      console.log("Hay un error, debe completar los campos");
+      //console.log("Hay un error, debe completar los campos");
       setError(true);
       return;
     }
-    //Asignar un ID
 
+    if(categoria === "--Categorias--"){    
+      window.alert("Debe Seleccionar una Categoria");
+      return;
+    }
+    //Asignar un ID
     plato.id = uuidv4();
 
     //Crear una cita para ser listada
     setlistadoPlatos([...listadoPlatos, plato]);
 
+    
+
     //Reiniciar el form
     setPlato({
       nombrePlato: "",
       precioPlato: "",
-      comentarioPlato: "",
+      comentarioPlato: ""      
     });
   };
 
   //declarando el uso del context
   const { listadoPlatos, setlistadoPlatos, listaCategorias } = useContext(MenuContext);
 
-  console.log(listaCategorias)
-  console.log("debio salir categorias")
+ /*  console.log(listaCategorias)
+  console.log("debio salir categorias") */
 
 
   return (
@@ -115,11 +124,13 @@ const FormularioMenu = () => {
         </div>
 
         <label>Seleccione una Categoria</label>
-        <select name="Categorias" className="form-control mb-1">          
+        <select name="categoria" onChange={handleInputChange}  className="form-control mb-1">
+        <option>--Categorias--</option>          
           {listaCategorias.map(categoria=>(
             <option 
               key={categoria}
-              value={categoria}              
+              value={categoria}   
+                       
             >{categoria}</option>  
           ))}
           

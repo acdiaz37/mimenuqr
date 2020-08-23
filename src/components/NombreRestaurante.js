@@ -57,14 +57,20 @@ const NombreRestaurante = () => {
         <>    
           
             {nombrelleno ? 
-                <><h2>{nombreRest.NombreRestaurante}</h2>
-                <a className="btn btn-success" 
-                    onClick={cambiandoNombreLleno} 
-                    
-                    
-                >Editar</a></>
+                <>
+                
+                <h5
+                  className="text-uppercase justify-content-center text-center"
+                >{nombreRest.NombreRestaurante}<span 
+                    className="badge badge-success btn"
+                    onClick={cambiandoNombreLleno}
+                    > ✏️ </span></h5>
+                </>
+                
+
                 :
-                <><div className="border border-warning my-3">
+                <><div className="border border-primary py-3 px-1">
+                <small className="text-white-50 text-light float-right">--Ingresa el nombre del restaurante--</small>
                 <form onSubmit={guardandoNombre}>
                 <input
                   type="text"
@@ -74,7 +80,7 @@ const NombreRestaurante = () => {
                   name="NombreRestaurante"
                                    
                 />
-                <button className="btn btn-warning">GUARDAR</button>
+                <button className="btn btn-primary btn-sm btn-block mt-1">GUARDAR</button>
 
                 </form>
                 </div>

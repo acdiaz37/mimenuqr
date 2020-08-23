@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import {MenuContext} from "../context/MenuContext"
+import Swal from 'sweetalert2';
 
 const Categorias = () => {    
    
@@ -9,10 +10,30 @@ const Categorias = () => {
     }
 
     const guardandoCategoria=(e)=>{
+
         e.preventDefault();    
+        
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+         
+
         setlistaCategorias([...listaCategorias, currentCategoria.nombreCategoria])
         setcurrentCategoria({nombreCategoria:""})
         setbanderaCategorias(true)
+        Toast.fire({
+            icon: 'success',
+            title: 'Se ha Agregado una Categoria'
+          })
 
     }
 
@@ -23,7 +44,12 @@ const Categorias = () => {
     
     return ( 
     <>
-        <form onSubmit={guardandoCategoria}> 
+        <small className="text-white-50 text-light float-right">--Ingresa Nombre Categoria--</small>
+        <form onSubmit={guardandoCategoria}
+            className="border border-warning p-2 input-group"
+        > 
+        
+        
         <input onChange={handleCategoria}
             type="text"
             className="form-control"
@@ -32,7 +58,10 @@ const Categorias = () => {
             value={currentCategoria.nombreCategoria}
             
         />
-        <button className="btn btn-warning"> Agregar Categoria</button>
+        <div className="input-group-append btn-group btn-group-sm">
+            <button className="btn btn-warning"> Agregar</button>    
+        </div>
+        
         </form>    
     </>
     );

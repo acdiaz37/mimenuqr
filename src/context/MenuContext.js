@@ -18,12 +18,18 @@ const MenuProvider = (props)=>{
 
     //STATE BANDERA PARA ACTIVAR FORMULARIO PLATOS
     const [banderaCategorias, setbanderaCategorias] = useState(false)
+
+    //STATE BNDERA PARA ACTIVAR BOTON DE FINALIZAR CUANDO EXISTAN PLATOS
+    const [banderaPlatos, setbanderaPlatos] = useState(false)
     
     //STATE LISTADO DE CATEGORIAS
     const [listaCategorias, setlistaCategorias] = useState([])
 
     //STATE PARA LISTADO DE PLATOS
     const [listadoPlatos, setlistadoPlatos] = useState([])
+
+    //STATE QUE TOMA EL ID DADO POR FIREBASE UNA VEZ GUARDADO EL MENU
+    const [idcurrentmenu, setidcurrentmenu] = useState("")
 
     return(
         <MenuContext.Provider
@@ -32,7 +38,9 @@ const MenuProvider = (props)=>{
                 banderaNombre,setbanderaNombre,
                 listaCategorias,setlistaCategorias,
                 listadoPlatos, setlistadoPlatos,
-                banderaCategorias, setbanderaCategorias
+                banderaCategorias, setbanderaCategorias,
+                banderaPlatos, setbanderaPlatos,
+                idcurrentmenu, setidcurrentmenu
             }}
         >
             {props.children}

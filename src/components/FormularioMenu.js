@@ -31,11 +31,10 @@ const FormularioMenu = () => {
     //validar el formulario
     if (
       nombrePlato.trim() === "" ||
-      precioPlato.trim() === "" ||
-      comentarioPlato.trim() === ""      
+      precioPlato.trim() === ""       
     ) {
       //console.log("Hay un error, debe completar los campos");
-      setError(true);
+      setError(true);      
       return;
     }
 
@@ -47,6 +46,7 @@ const FormularioMenu = () => {
     plato.id = uuidv4();
 
     //Crear una cita para ser listada
+    setbanderaPlatos(true)
     setlistadoPlatos([...listadoPlatos, plato]);
 
     
@@ -60,7 +60,7 @@ const FormularioMenu = () => {
   };
 
   //declarando el uso del context
-  const { listadoPlatos, setlistadoPlatos, listaCategorias } = useContext(MenuContext);
+  const { listadoPlatos, setbanderaPlatos, setlistadoPlatos, listaCategorias } = useContext(MenuContext);
 
  /*  console.log(listaCategorias)
   console.log("debio salir categorias") */
@@ -74,7 +74,7 @@ const FormularioMenu = () => {
             className="alert alert-danger alert-dismissible fade show"
             role="alert"
           >
-            <strong>Error! </strong> Todos los campos son obligatorios
+            <strong>Error! </strong> El nombre y precio son obligatorios
             <button
               type="button"
               className="close"
@@ -85,11 +85,12 @@ const FormularioMenu = () => {
             </button>
           </div>
         ) : null}
-
-        <div className="form-group input-group">
+        <small className="text-white-50 text-light float-right">--Ingresa Nombre Categoria--</small>
+        <div className="form-group input-group">        
+        <br/>
           <input
             className="form-control"
-            placeholder="Nombre plato"
+            placeholder="*Nombre plato"
             name="nombrePlato"
             type="text"
             onChange={handleInputChange}
@@ -99,11 +100,11 @@ const FormularioMenu = () => {
 
         <div className="form-group input-group">
           <div className="input-group-text bg-light">
-            <i className="material-icons">attach_money</i>
+            <i className="material-icons bg-dark">attach_money</i>
           </div>
           <input
             className="form-control"
-            placeholder="Precio"
+            placeholder="*Precio"
             name="precioPlato"
             type="number"
             min="0.00"
@@ -123,7 +124,7 @@ const FormularioMenu = () => {
           />
         </div>
 
-        <label>Seleccione una Categoria</label>
+        <small>Seleccione una Categoria</small>
         <select name="categoria" onChange={handleInputChange}  className="form-control mb-1">
         <option>--Categorias--</option>          
           {listaCategorias.map(categoria=>(

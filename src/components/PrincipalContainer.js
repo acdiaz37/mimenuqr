@@ -16,13 +16,13 @@ const PrincipalContainer = () => {
       <Navbar />
       <div className="container">
         <div className="row">
-          <div className="col-md-4"><ContenedorMenu/></div>
-          <div className="col-md-8"><MenuLista/></div>
-        </div>           
+          <div className="col-md-5"><ContenedorMenu/></div>
+          <div className="col-md-7 my-3"><MenuLista/></div>
+        </div>                 
       </div>      
     </MenuProvider>         
     </> 
     );
 }
  
-export default PrincipalContainer;
+export default PrincipalContainer;  

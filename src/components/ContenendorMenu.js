@@ -5,6 +5,7 @@ import FormularioMenu from "../components/FormularioMenu";
 import {Link } from "react-router-dom";
 import {MenuContext} from "../context/MenuContext"
 import { db } from '../firebase';
+import Swal from 'sweetalert2';
 
 const ContenedorMenu = () => {
 
@@ -21,6 +22,27 @@ const ContenedorMenu = () => {
             setidcurrentmenu(currentMenuFB.ua.path.segments[1])
             console.log(currentMenuFB.ua.path.segments[1])
         })
+
+        const valores =()=>{
+            return(<h4>{idcurrentmenu}</h4>)
+        
+        
+            
+        } 
+        Swal.fire({
+            title: '<strong>Felicidades,<br/>Tu menu ha sido creado</strong>',
+            icon: 'success',
+            html:valores,
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: false,
+            confirmButtonText:
+              '<i class="fa fa-thumbs-up"></i> Great!',
+            confirmButtonAriaLabel: 'Thumbs up, great!',
+            cancelButtonText:
+              '<i class="fa fa-thumbs-down"></i>',
+            cancelButtonAriaLabel: 'Thumbs down'
+          })
     }
 
     const {listadoPlatos, setidcurrentmenu, idcurrentmenu, nombreRest, banderaNombre,banderaCategorias, banderaPlatos} = useContext(MenuContext);
@@ -32,9 +54,9 @@ const ContenedorMenu = () => {
         {banderaNombre ? <Categorias/>:null}
         {banderaCategorias ?<FormularioMenu/>:null}
         {banderaPlatos ?
-            <Link to="/menu"><a className="btn btn-success btn-block"
+            <a className="btn btn-success btn-block"
                 onClick={sendingFirebase}
-            >Finalizar Menu</a></Link>
+            >Finalizar Menu</a>
             :
             <h2>NO</h2>
         }

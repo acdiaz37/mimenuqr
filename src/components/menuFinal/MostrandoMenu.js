@@ -4,11 +4,14 @@ import {MenuContext} from "../../context/MenuContext"
 const MostrandoMenu = () => {
 
     //const {idcurrentmenu} = useContext(MenuContext);
-    const {nombreRest} = useContext(MenuContext);
+    const {idcurrentmenu} = useContext(MenuContext);
+
+    console.log("desde mnu")
+    console.log(idcurrentmenu)
     
 
     return ( <>
-        <h3>final</h3>
+        <h3>{idcurrentmenu}</h3>
     </>);
 }
  

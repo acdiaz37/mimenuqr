@@ -8,7 +8,7 @@ const PrincipalContainerMenu = () => {
     
     return ( <>
         <MenuProvider2>
-            <MostrandoMenu/>
+            
         </MenuProvider2>
      </>);
 }

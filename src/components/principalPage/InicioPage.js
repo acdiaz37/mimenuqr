@@ -1,6 +1,12 @@
 import React from 'react'
+import Login from '../../login';
 
-const InicioPage = () => {
+
+
+
+const InicioPage = () => {  
+   
+    
     return (<>
 
      <div className="container my-5">
@@ -9,6 +15,7 @@ const InicioPage = () => {
         <h1 className="display-3">Bienvenido! Mi menuQR</h1>
         <p>Mi menuQR, es la forma mas simple de mostrar el menu de tu restaurante de forma digital</p>
         <p className="lead">
+            <Login/>
             <a href="/app" className="btn btn-primary btn-lg">Inicia Aqui</a>
         </p>
     </div>

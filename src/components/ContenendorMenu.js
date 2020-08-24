@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+/* import React, {useContext} from 'react';
 import NombreRestaurante from "../components/NombreRestaurante";
 import Categorias from "../components/Categorias";
 import FormularioMenu from "../components/FormularioMenu";
@@ -66,4 +66,4 @@ const ContenedorMenu = () => {
     );
 }
  
-export default ContenedorMenu;
+export default ContenedorMenu; */
